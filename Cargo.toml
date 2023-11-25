@@ -4,6 +4,9 @@ version = "0.1.0"
 edition = "2021"
 description = "OpenApi type generator"
 authors = ["Charles Bourget <charlesbourget657@gmail.com>"]
+license = "MIT"
+repository = "https://github.com/charlesbourget657/typegen"
+readme = "README.md"
 
 [dependencies]
 anyhow = "1.0.75"
