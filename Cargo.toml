@@ -1,0 +1,16 @@
+[package]
+name = "typegen"
+version = "0.1.0"
+edition = "2021"
+description = "OpenApi type generator"
+authors = ["Charles Bourget <charlesbourget657@gmail.com>"]
+
+[dependencies]
+anyhow = "1.0.75"
+clap = { version = "4.4.8", features = ["derive"] }
+openapiv3 = "1.0.3"
+progenitor = "0.4.0"
+serde_yaml = "0.9.27"
+quote = "1.0.33"
+syn = "2.0.39"
+prettyplease = "0.2.15"
