@@ -5,7 +5,7 @@ use quote::__private::TokenStream;
 use quote::quote;
 use std::fs;
 
-pub fn generate_code(spec_file_path: String, generation_settings: &GenerationSettings) -> Result<String> {
+pub fn generate_code(spec_file_path: &str, generation_settings: &GenerationSettings) -> Result<String> {
     let tokens = generate_tokens(spec_file_path, generation_settings)?;
 
     let ast = syn::parse2(tokens).unwrap();
@@ -14,8 +14,8 @@ pub fn generate_code(spec_file_path: String, generation_settings: &GenerationSet
     Ok(content)
 }
 
-fn generate_tokens(spec_file_path: String, generation_settings: &GenerationSettings) -> Result<TokenStream> {
-    let spec_data = parse_openapi_spec(spec_file_path)?;
+fn generate_tokens(spec_file_path: &str, generation_settings: &GenerationSettings) -> Result<TokenStream> {
+    let spec_data = parse_openapi_spec(&spec_file_path)?;
 
     let mut generator = Generator::new(generation_settings);
     generator
@@ -39,7 +39,7 @@ fn generate_tokens(spec_file_path: String, generation_settings: &GenerationSetti
     Ok(tokens)
 }
 
-fn parse_openapi_spec(spec_file_path: String) -> Result<OpenAPI> {
+fn parse_openapi_spec(spec_file_path: &str) -> Result<OpenAPI> {
     let spec_data = fs::read_to_string(spec_file_path).context("Could not read spec file")?;
     let openapi: OpenAPI = serde_yaml::from_str(&spec_data).context("Could not parse spec file")?;
 

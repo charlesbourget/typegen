@@ -19,7 +19,7 @@ fn main() -> Result<()> {
     let args = Args::parse();
 
     let generation_settings = GenerationSettings::default();
-    let content = generate_code(args.spec, &generation_settings)?;
+    let content = generate_code(&args.spec, &generation_settings)?;
 
     // Create output file
     File::create(args.output)

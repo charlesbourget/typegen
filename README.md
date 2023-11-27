@@ -20,7 +20,7 @@ fn main() {
     let openapi_spec = "openapi.yml";
 
     let generation_settings = GenerationSettings::default();
-    let content = typegen::generate_code(args.spec, &generation_settings).unwrap();
+    let content = typegen::generate_code(openapi_spec, &generation_settings).unwrap();
 
     let mut out_file = std::path::Path::new(&std::env::var("OUT_DIR").unwrap()).to_path_buf();
     out_file.push("typegen.rs");
